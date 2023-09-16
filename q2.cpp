@@ -10,12 +10,13 @@ int counter;
 mutex counter_mtx;
 pthread_rwlock_t rwlock;
 
+//change thd_func1 locking sequence
 void * thd_func1 (void *arg) {
-    counter_mtx.lock();
     pthread_rwlock_rdlock(&rwlock);
+    counter_mtx.lock();
     counter++;
-    pthread_rwlock_unlock(&rwlock);
     counter_mtx.unlock();
+    pthread_rwlock_unlock(&rwlock);
     return NULL;
 }
 
