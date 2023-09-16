@@ -4,7 +4,7 @@ q1_Q2:
 由於char變數儲存ASCII裡的一個整數編號，且binary search需用在排序好的數列，故"111"(ascii:49)應該放在"aa"(ascii:97)前面。
 
 q2:  
-此程式的問題是互斥鎖應用不當導致死鎖，同時使用counter_mtx及rwlock兩個互斥鎖，由於thd_func1與thd_func2兩者使用鎖的順序相反，有可能導致thd_func1鎖上counter_mtx同時thd_func2鎖上rwlock，由於兩者若要繼續運行皆需要對方鎖上的資源，最終導致死鎖。
+此程式的問題是鎖應用不當導致死鎖，同時使用counter_mtx及rwlock兩個鎖，由於thd_func1與thd_func2兩者使用鎖的順序相反，有可能導致thd_func1鎖上counter_mtx同時thd_func2鎖上rwlock，由於兩者若要繼續運行皆需要對方鎖上的資源，最終導致死鎖。
 
 解決方法1:thd_func1或thd_func2調換上鎖與解鎖的先後順序
 
