@@ -12,7 +12,7 @@ pthread_rwlock_t rwlock;
 
 //change thd_func1 locking sequence
 void * thd_func1 (void *arg) {
-    pthread_rwlock_rdlock(&rwlock);
+    pthread_rwlock_wrlock(&rwlock);
     counter_mtx.lock();
     counter++;
     counter_mtx.unlock();
